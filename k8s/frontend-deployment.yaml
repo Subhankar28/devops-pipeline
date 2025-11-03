@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  labels:
+    app: frontend
 spec:
   replicas: 1
   selector:
@@ -14,13 +16,14 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: your-dockerhub-username/frontend:latest
+          image: subhankar28/frontend:latest
           ports:
             - containerPort: 80
           resources:
             requests:
-              cpu: "100m"
               memory: "128Mi"
-            limits:
               cpu: "250m"
+            limits:
               memory: "256Mi"
+              cpu: "500m"
+
